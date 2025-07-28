@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mason Sterling - MULTIVERSES AUDIO</title>
+    
+    <style>
+        /* FIGMA IMPORT OPTIMIZED CSS */
+        /* Clear structure with semantic naming for better Figma import */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Design System Variables - Will become Figma Variables */
+        :root {
+            /* Colors - Will become Figma Color Styles */
+            --primary-purple: #8B5CF6;
+            --primary-pink: #EC4899;
+            --primary-amber: #F59E0B;
+            --neutral-white: #FFFFFF;
+            --neutral-black: #000000;
+            --gray-100: #F3F4F6;
+            --gray-400: #9CA3AF;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            
+            /* Typography - Will become Figma Text Styles */
+            --font-family: 'Inter', system-ui, sans-serif;
+            --text-display: 800 96px/1 var(--font-family);
+            --text-h1: 700 48px/1.2 var(--font-family);
+            --text-h2: 600 32px/1.3 var(--font-family);
+            --text-h3: 600 24px/1.4 var(--font-family);
+            --text-body-lg: 400 18px/1.6 var(--font-family);
+            --text-body: 400 16px/1.5 var(--font-family);
+            --text-caption: 400 14px/1.4 var(--font-family);
+            
+            /* Spacing - Will become Figma Grid System */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-2xl: 80px;
+            
+            /* Effects - Will become Figma Effect Styles */
+            --shadow-glass: 0 0 0 1px rgba(255,255,255,0.1);
+            --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.3);
+            --blur-backdrop: blur(16px);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+        }
+
+        body {
+            font: var(--text-body);
+            background: var(--neutral-black);
+            color: var(--neutral-white);
+            overflow-x: hidden;
+        }
+
+        /* Layout Containers - Clear Figma Frame Structure */
+        .page-container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section {
+            width: 100%;
+            padding: var(--space-2xl) var(--space-md);
+            position: relative;
+            z-index: 10;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .container-sm {
+            width: 100%;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        /* Background Animation Component */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .bg-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: pulse-animation 3s ease-in-out infinite;
+        }
+
+        .bg-circle--purple {
+            top: 80px;
+            left: 80px;
+            background: var(--primary-purple);
+        }
+
+        .bg-circle--blue {
+            bottom: 80px;
+            right: 80px;
+            background: #3B82F6;
+            animation-delay: 1s;
+        }
+
+        .bg-circle--pink {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-pink);
+            animation-delay: 0.5s;
+        }
+
+        @keyframes pulse-animation {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        /* Header Component */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            font: var(--text-h2);
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .nav-link {
+            color: var(--neutral-white);
+            text-decoration: none;
+            font: var(--text-body);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-purple);
+        }
+
+        /* Hero Section Component */
+        .hero {
+            text-align: center;
+            padding: var(--space-2xl) 0;
+        }
+
+        .hero__title {
+            font: var(--text-display);
+            margin-bottom: var(--space-md);
+            background: linear-gradient(to right, var(--neutral-white), #C4B5FD, #F8BBD0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .hero__subtitle {
+            font: var(--text-h1);
+            color: var(--gray-400);
+            margin-bottom: var(--space-lg);
+            font-weight: 400;
+        }
+
+        .hero__description {
+            font: var(--text-body-lg);
+            color: var(--gray-400);
+            max-width: 768px;
+            margin: var(--space-lg) auto 0;
+        }
+
+        /* Audio Player Component */
+        .audio-player {
+            max-width: 512px;
+            margin: 0 auto var(--space-lg);
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: var(--blur-backdrop);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            border: 1px solid var(--gray-700);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .audio-player__title {
+            font: var(--text-h3);
+            margin-bottom: var(--space-md);
+            text-align: center;
+        }
+
+        .progress-container {
+            margin-bottom: var(--space-md);
+        }
+
+        .progress-time {
+            display: flex;
+            justify-content: space-between;
+            font: var(--text-caption);
+            color: var(--gray-400);
+            margin-bottom: var(--space-xs);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-700);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--gray-700), var(--gray-800));
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+            width: 25%;
+        }
+
+        .progress-fill--classic { background: linear-gradient(to right, #6B7280, #4B5563); }
+        .progress-fill--karaoke { background: linear-gradient(to right, var(--primary-purple), var(--primary-pink)); }
+        .progress-fill--lounge { background: linear-gradient(to right, var(--primary-amber), #DC2626); }
+        .progress-fill--dance { background: linear-gradient(to right, #3B82F6, var(--primary-purple)); }
+        .progress-fill--rock { background: linear-gradient(to right, #DC2626, #F97316); }
+        .progress-fill--cinematic { background: linear-gradient(to right, #4F46E5, var(--primary-purple)); }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: var(--gray-400);
+            cursor: pointer;
+            padding: var(--space-xs);
+            transition: color 0.3s ease;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            color: var(--neutral-white);
+        }
+
+        .play-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(to right, var(--gray-700), var(--gray-800));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            color: var(--neutral-white);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .play-btn--active {
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-pink));
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Universe Grid Component */
+        .universe-section {
+            text-align: center;
+        }
+
+        .universe-section__title {
+            font: var(--text-h1);
+            margin-bottom: var(--space-xl);
+        }
+
+        .universe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--space-sm);
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .universe-card {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-700);
+            background: rgba(17, 24, 39, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .universe-card:hover {
+            transform: scale(1.05);
+            border-color: var(--gray-400);
+        }
+
+        .universe-card--active {
+            border-color: var(--primary-purple);
+            background: linear-gradient(to bottom right, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+            box-shadow: var(--shadow-glow);
+        }
+
+        .universe-card__icon {
+            font-size: 48px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .universe-card__title {
+            font: var(--text-h3);
+            margin-bottom: var(--space-xs);
+        }
+
+        .universe-card__description {
+            font: var(--text-caption);
+            color: var(--gray-400);
+        }
+
+        /* EP Section Component */
+        .ep-section {
+            background: rgba(17, 24, 39, 0.3);
+            text-align: center;
+        }
+
+        .ep-section__title {
+            font: var(--text-h1);
+            margin-bottom: var(--space-lg);
+        }
+
+        .ep-card {
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-pink));
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .ep-card__title {
+            font: var(--text-h1);
+            margin-bottom: var(--space-sm);
+        }
+
+        .ep-card__description {
+            font: var(--text-body-lg);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+        }
+
+        .ep-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px var(--space-lg);
+            border-radius: var(--radius-full);
+            font: var(--text-body);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .btn--primary {
+            background: var(--neutral-white);
+            color: var(--neutral-black);
+        }
+
+        .btn--primary:hover {
+            background: var(--gray-100);
+            transform: scale(1.05);
+        }
+
+        .btn--secondary {
+            background: transparent;
+            color: var(--neutral-white);
+            border: 1px solid var(--neutral-white);
+        }
+
+        .btn--secondary:hover {
+            background: var(--neutral-white);
+            color: var(--neutral-black);
+            transform: scale(1.05);
+        }
+
+        /* About Section Component */
+        .about-section__title {
+            font: var(--text-h1);
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .about-card {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: var(--blur-backdrop);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            border: 1px solid var(--gray-700);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .about-quote {
+            font: var(--text-body-lg);
+            font-style: italic;
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            color: var(--gray-400);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .about-item__title {
+            font: var(--text-h3);
+            margin-bottom: var(--space-sm);
+        }
+
+        .about-item__text {
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+
+        /* Newsletter Section Component */
+        .newsletter-section {
+            text-align: center;
+        }
+
+        .newsletter-section__title {
+            font: var(--text-h1);
+            margin-bottom: var(--space-md);
+        }
+
+        .newsletter-section__description {
+            color: var(--gray-400);
+            margin-bottom: var(--space-lg);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 200px;
+            max-width: 320px;
+            padding: 12px var(--space-md);
+            background: var(--gray-900);
+            border: 1px solid var(--gray-700);
+            border-radius: var(--radius-full);
+            color: var(--neutral-white);
+            outline: none;
+            transition: border-color 0.3s ease;
+            font: var(--text-body);
+        }
+
+        .email-input:focus {
+            border-color: var(--primary-purple);
+        }
+
+        .email-input::placeholder {
+            color: var(--gray-400);
+        }
+
+        .subscribe-btn {
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-pink));
+            color: var(--neutral-white);
+            border: none;
+            padding: 12px var(--space-lg);
+            border-radius: var(--radius-full);
+            font: var(--text-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            min-width: 140px;
+        }
+
+        .subscribe-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer Component */
+        .footer {
+            border-top: 1px solid var(--gray-700);
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .footer-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .footer-brand__title {
+            font: var(--text-h2);
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-brand__subtitle {
+            color: var(--gray-400);
+            font: var(--text-body);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-link {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font: var(--text-body);
+        }
+
+        .footer-link:hover {
+            color: var(--neutral-white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-700);
+            padding-top: var(--space-lg);
+            text-align: center;
+            color: var(--gray-400);
+            font: var(--text-caption);
+        }
+
+        .footer-bottom p {
+            margin-bottom: var(--space-xs);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero__title {
+                font-size: 48px;
+            }
+            
+            .universe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .email-input {
+                max-width: 100%;
+            }
+            
+            .ep-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-main {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .universe-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .section {
+                padding: var(--space-xl) var(--space-sm);
+            }
+        }
+
+        /* Utility Classes for Figma Import */
+        .text-center { text-align: center; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-sm { gap: var(--space-sm); }
+        .gap-md { gap: var(--space-md); }
+        .gap-lg { gap: var(--space-lg); }
+        .mb-sm { margin-bottom: var(--space-sm); }
+        .mb-md { margin-bottom: var(--space-md); }
+        .mb-lg { margin-bottom: var(--space-lg); }
+        .p-sm { padding: var(--space-sm); }
+        .p-md { padding: var(--space-md); }
+        .p-lg { padding: var(--space-lg); }
+    </style>
+</head>
+<body>
+    <!-- Page Container - Main Figma Frame -->
+    <div class="page-container">
+        
+        <!-- Background Animation Component -->
+        <div class="bg-animation">
+            <div class="bg-circle bg-circle--purple"></div>
+            <div class="bg-circle bg-circle--blue"></div>
+            <div class="bg-circle bg-circle--pink"></div>
+        </div>
+
+        <!-- Header Component -->
+        <header class="header">
+            <div class="logo">MULTIVERSES AUDIO</div>
+            <nav class="nav">
+                <a href="#about" class="nav-link">À propos</a>
+                <a href="#ep" class="nav-link">L'EP</a>
+                <a href="#newsletter" class="nav-link">Newsletter</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section Component -->
+        <section class="section hero">
+            <div class="container text-center">
+                <h1 class="hero__title">Mason Sterling</h1>
+                <h2 class="hero__subtitle">Une chanson. Cinq univers émotionnels.</h2>
+                
+                <!-- Audio Player Component -->
+                <div class="audio-player">
+                    <div class="audio-player__title" id="currentUniverse">Version Classique</div>
+                    
+                    <!-- Progress Container -->
+                    <div class="progress-container">
+                        <div class="progress-time">
+                            <span id="currentTime">0:45</span>
+                            <span id="duration">3:00</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-fill--classic" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="controls">
+                        <button class="control-btn">❤️</button>
+                        <button class="play-btn" id="playBtn">▶️</button>
+                        <button class="control-btn">📤</button>
+                    </div>
+                </div>
+
+                <p class="hero__description">
+                    Découvrez une expérience musicale révolutionnaire où chaque écoute 
+                    vous transporte dans un univers émotionnel unique.
+                </p>
+            </div>
+        </section>
+
+        <!-- Universe Selection Component -->
+        <section class="section universe-section">
+            <div class="container">
+                <h3 class="universe-section__title">Choisis ton ambiance</h3>
+                <div class="universe-grid">
+                    <div class="universe-card universe-card--active">
+                        <div class="universe-card__icon">🎵</div>
+                        <div class="universe-card__title">Classique</div>
+                        <div class="universe-card__description">L'expérience originale</div>
+                    </div>
+                    <div class="universe-card">
+                        <div class="universe-card__icon">🎤</div>
+                        <div class="universe-card__title">Karaoké</div>
+                        <div class="universe-card__description">Chante avec Mason</div>
+                    </div>
+                    <div class="universe-card">
+                        <div class="universe-card__icon">🍷</div>
+                        <div class="universe-card__title">Lounge</div>
+                        <div class="universe-card__description">Ambiance sophistiquée</div>
+                    </div>
+                    <div class="universe-card">
+                        <div class="universe-card__icon">💃</div>
+                        <div class="universe-card__title">Dance</div>
+                        <div class="universe-card__description">Énergie électrisante</div>
+                    </div>
+                    <div class="universe-card">
+                        <div class="universe-card__icon">🛣</div>
+                        <div class="universe-card__title">Rock</div>
+                        <div class="universe-card__description">Puissance brute</div>
+                    </div>
+                    <div class="universe-card">
+                        <div class="universe-card__icon">🎻</div>
+                        <div class="universe-card__title">Cinematic</div>
+                        <div class="universe-card__description">Orchestrations épiques</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EP Section Component -->
+        <section class="section ep-section" id="ep">
+            <div class="container-sm">
+                <h3 class="ep-section__title">💥 Découvre l'EP Love's Journey</h3>
+                <div class="ep-card">
+                    <h4 class="ep-card__title">5 titres, 25 univers émotionnels</h4>
+                    <p class="ep-card__description">
+                        Chaque chanson de l'EP existe dans les 5 univers MULTIVERSES AUDIO. 
+                        Une expérience musicale complète qui s'adapte à toutes vos émotions.
+                    </p>
+                    <div class="ep-buttons">
+                        <button class="btn btn--primary">
+                            ▶️ Écouter l'EP
+                        </button>
+                        <button class="btn btn--secondary">
+                            ⬇️ Télécharger
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section Component -->
+        <section class="section" id="about">
+            <div class="container-sm">
+                <h3 class="about-section__title">À propos de Mason Sterling</h3>
+                <div class="about-card">
+                    <blockquote class="about-quote">
+                        "Mason Sterling est une création IA. Grâce à MULTIVERSES AUDIO, 
+                        il te fait vivre une chanson comme jamais auparavant."
+                    </blockquote>
+                    <div class="about-grid">
+                        <div class="about-item">
+                            <h4 class="about-item__title">L'Innovation MULTIVERSES</h4>
+                            <p class="about-item__text">
+                                Première expérience musicale qui transforme une composition unique 
+                                en cinq expériences émotionnelles distinctes, créées par intelligence artificielle.
+                            </p>
+                        </div>
+                        <div class="about-item">
+                            <h4 class="about-item__title">Technologie & Créativité</h4>
+                            <p class="about-item__text">
+                                Chaque univers est méticuleusement crafté pour offrir une expérience 
+                                authentique, adaptée à toutes les émotions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section Component -->
+        <section class="section newsletter-section" id="newsletter">
+            <div class="container-sm">
+                <h3 class="newsletter-section__title">📩 Suivre Mason Sterling</h3>
+                <p class="newsletter-section__description">
+                    Soyez les premiers informés des nouvelles sorties et expériences MULTIVERSES AUDIO
+                </p>
+                <form class="newsletter-form">
+                    <input type="email" class="email-input" placeholder="Votre adresse email" required>
+                    <button type="submit" class="subscribe-btn">S'abonner</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer Component -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <h4 class="footer-brand__title">MULTIVERSES AUDIO</h4>
+                        <p class="footer-brand__subtitle">L'avenir de l'expérience musicale</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Spotify</a>
+                        <a href="#" class="footer-link">Apple Music</a>
+                        <a href="#" class="footer-link">YouTube</a>
+                        <a href="#" class="footer-link">SoundCloud</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 Mason Sterling - MULTIVERSES AUDIO. Tous droits réservés.</p>
+                    <p>Site créé par Mathieu Chamberland - Québec, Canada</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
