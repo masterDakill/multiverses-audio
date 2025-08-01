@@ -7,7 +7,6 @@
   "env": {
     "NODE_VERSION": "18.x"
   },
-  "functions": {},
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -30,7 +29,7 @@
     },
     {
       "source": "/soundcloud",
-      "destination": "https://on.soundcloud.com/Gk5GuPyfdgfRbJPfhJ"
+      "destination": "https://on.soundcloud.com/6KsGuPyfdgfRbJPfhJ"
     },
     {
       "source": "/suno",
