@@ -1,1 +1,74 @@
-// Placeholder for universes.json
+[
+  {
+    "id": 1,
+    "title": "Classic Synthesis",
+    "description": "Synthwave vintage revisité par l'IA",
+    "color": "purple",
+    "status": "available",
+    "audio": "/assets/audio/classic-synthesis.mp3",
+    "duration": "3:24",
+    "genre": "Synthwave",
+    "mood": "Nostalgique",
+    "year": 2024
+  },
+  {
+    "id": 2,
+    "title": "Cosmic Drift",
+    "description": "Voyage spatial ambient",
+    "color": "blue",
+    "status": "coming-soon",
+    "audio": "/assets/audio/cosmic-drift-preview.mp3",
+    "duration": "4:12",
+    "genre": "Ambient",
+    "mood": "Contemplatif",
+    "year": 2024
+  },
+  {
+    "id": 3,
+    "title": "Urban Resonance",
+    "description": "Electronic Hip-Hop urbain",
+    "color": "green",
+    "status": "coming-soon",
+    "audio": null,
+    "duration": "3:45",
+    "genre": "Electronic Hip-Hop",
+    "mood": "Énergique",
+    "year": 2024
+  },
+  {
+    "id": 4,
+    "title": "Digital Forest",
+    "description": "Fusion organique-digitale",
+    "color": "cyan",
+    "status": "coming-soon",
+    "audio": null,
+    "duration": "5:01",
+    "genre": "Organic Electronic",
+    "mood": "Nature",
+    "year": 2024
+  },
+  {
+    "id": 5,
+    "title": "Emotional Algorithms",
+    "description": "IA émotionnelle cinématique",
+    "color": "pink",
+    "status": "coming-soon",
+    "audio": null,
+    "duration": "4:33",
+    "genre": "Cinematic",
+    "mood": "Émotionnel",
+    "year": 2024
+  },
+  {
+    "id": 6,
+    "title": "Future Memories",
+    "description": "Rétro-futurisme nostalgique",
+    "color": "orange",
+    "status": "coming-soon",
+    "audio": null,
+    "duration": "3:58",
+    "genre": "Retro-futuristic",
+    "mood": "Nostalgique",
+    "year": 2024
+  }
+]
