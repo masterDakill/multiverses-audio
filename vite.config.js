@@ -8,7 +8,20 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,mp3}']
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,mp3,wav,ogg}'],
+        runtimeCaching: [
+          {
+            urlPattern: /\.(?:mp3|wav|ogg)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'audio-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60
+              }
+            }
+          }
+        ]
       },
       manifest: {
         name: 'Mason Sterling - Multiverses Audio',
@@ -37,6 +50,7 @@ export default defineConfig({
       }
     })
   ],
+  assetsInclude: ['**/*.mp3', '**/*.wav', '**/*.ogg'],
   base: '/',
   build: {
     outDir: 'dist',
@@ -85,7 +99,8 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'lucide-react', 'framer-motion'],
-    exclude: ['@vite/client', '@vite/env']
+    exclude: ['@vite/client', '@vite/env'],
+    force: true
   },
   define: {
     __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
