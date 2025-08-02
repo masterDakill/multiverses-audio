@@ -4,59 +4,70 @@ import { Play, Pause, Volume2, ExternalLink, Mail, Instagram, Youtube, Music } f
 
 // Données des univers musicaux
 const universes = [
-  {
-    id: 1,
-    title: "Classic Synthesis",
-    description: "Synthwave vintage revisité par l'IA",
-    color: "purple",
-    status: "available",
-    audio: "/assets/audio/classic-synthesis.mp3",
-    duration: "3:24"
+{
+    "id": 1,
+    "title": "Neon Love",
+    "description": "L'amour illuminé par les néons de la ville",
+    "color": "cyan",
+    "status": "coming-soon",
+    "audio": null,
+    "duration": "3:45",
+    "genre": "Synthwave Romance",
+    "mood": "Passionné",
+    "album": "Love's Journey",
+    "trackNumber": 1
   },
   {
-    id: 2,
-    title: "Cosmic Drift",
-    description: "Voyage spatial ambient",
-    color: "blue",
-    status: "coming-soon",
-    audio: "/assets/audio/cosmic-drift-preview.mp3",
-    duration: "4:12"
+    "id": 2,
+    "title": "Roads We Travel",
+    "description": "Les chemins parcourus ensemble",
+    "color": "pink",
+    "status": "coming-soon",
+    "audio": null,
+    "duration": "4:12",
+    "genre": "Emotional Pop",
+    "mood": "Nostalgique",
+    "album": "Love's Journey",
+    "trackNumber": 2
   },
   {
-    id: 3,
-    title: "Urban Resonance",
-    description: "Electronic Hip-Hop urbain",
-    color: "green",
-    status: "coming-soon",
-    audio: null,
-    duration: "3:45"
+    "id": 3,
+    "title": "Endless Journey",
+    "description": "Un voyage sans fin vers l'amour éternel",
+    "color": "orange",
+    "status": "coming-soon",
+    "audio": null,
+    "duration": "4:33",
+    "genre": "Ambient Love",
+    "mood": "Romantique",
+    "album": "Love's Journey",
+    "trackNumber": 3
   },
   {
-    id: 4,
-    title: "Digital Forest",
-    description: "Fusion organique-digitale",
-    color: "cyan",
-    status: "coming-soon",
-    audio: null,
-    duration: "5:01"
+    "id": 4,
+    "title": "Stars Above",
+    "description": "Sous un ciel étoilé, l'amour brille",
+    "color": "blue",
+    "status": "coming-soon",
+    "audio": null,
+    "duration": "3:58",
+    "genre": "Dreamy Pop",
+    "mood": "Contemplatif",
+    "album": "Love's Journey",
+    "trackNumber": 4
   },
   {
-    id: 5,
-    title: "Emotional Algorithms",
-    description: "IA émotionnelle cinématique",
-    color: "pink",
-    status: "coming-soon",
-    audio: null,
-    duration: "4:33"
-  },
-  {
-    id: 6,
-    title: "Future Memories",
-    description: "Rétro-futurisme nostalgique",
-    color: "orange",
-    status: "coming-soon",
-    audio: null,
-    duration: "3:58"
+    "id": 5,
+    "title": "Drawn to the Unknown",
+    "description": "Attiré vers l'inconnu mystérieux",
+    "color": "purple",
+    "status": "available",
+    "audio": "/assets/audio/drawn-to-the-unknown.m4a",
+    "duration": "4:03",
+    "genre": "Dark Ambient",
+    "mood": "Mystérieux",
+    "album": "Singles",
+    "trackNumber": 1
   }
 ];
 
@@ -328,7 +339,66 @@ export default function App() {
           </div>
         </motion.div>
       </header>
+      
+{/* Section EP Love's Journey */}
+<motion.section
+  initial={{ y: 50, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.8, delay: 0.1 }}
+  className="relative z-10 max-w-4xl mx-auto px-6 mb-16"
+>
+  <div className="glass rounded-2xl p-8 border border-white/20 text-center">
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className="mb-6"
+    >
+      <h2 className="text-4xl font-bold mb-4">
+        <span className="gradient-text">Love's Journey</span>
+      </h2>
+      <p className="text-xl text-gray-300 mb-6">Nouvel EP - Bientôt disponible</p>
+      
+      {/* Tracklist */}
+      <div className="space-y-3 mb-8">
+        {universes.filter(u => u.album === "Love's Journey").map((track, index) => (
+          <motion.div
+            key={track.id}
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: index * 0.1 }}
+            className="flex items-center justify-between p-3 bg-white/5 rounded-lg"
+          >
+            <div className="flex items-center gap-4">
+              <span className="text-lg font-mono text-gray-400">
+                {track.trackNumber}.
+              </span>
+              <div className="text-left">
+                <h4 className={`font-semibold text-${track.color}-400`}>
+                  {track.title}
+                </h4>
+                <p className="text-sm text-gray-400">{track.description}</p>
+              </div>
+            </div>
+            <div className="text-right">
+              <span className="text-sm text-gray-400">{track.duration}</span>
+              <div className={`text-xs px-2 py-1 rounded-full mt-1 bg-yellow-500/20 text-yellow-400`}>
+                Bientôt
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
+      {/* EP Info */}
+      <div className="flex flex-col md:flex-row justify-center gap-4 text-sm text-gray-400">
+        <span>🎵 4 titres</span>
+        <span>⏱️ 16 minutes</span>
+        <span>🎨 Produit par IA</span>
+        <span>💝 Thème : Amour & Voyage</span>
+      </div>
+    </motion.div>
+  </div>
+</motion.section>
+      
       {/* Univers Grid */}
       <main className="relative z-10 max-w-6xl mx-auto px-6 pb-32">
         <motion.div
