@@ -7,7 +7,6 @@
   "env": {
     "NODE_VERSION": "18.x"
   },
-  "functions": {},
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -19,15 +18,15 @@
       ]
     },
     {
-      "source": "/(.*\\.(mp3|wav|ogg))",
+      "source": "/(.*\\.(mp3|wav|ogg|m4a))",
       "headers": [
         {
-          "key": "Cache-Control", 
+          "key": "Cache-Control",
           "value": "public, max-age=86400"
         },
         {
           "key": "Content-Type",
-          "value": "audio/mpeg"
+          "value": "audio/mp4"
         }
       ]
     }
