@@ -1,15 +1,31 @@
 {
   "version": 2,
+  "name": "mason-sterling-multiverses-audio",
   "framework": "vite",
+  
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
+  "devCommand": "npm run dev",
+  
+  "env": {
+    "NODE_VERSION": "18.x"
+  },
+  
+  "build": {
+    "env": {
+      "VITE_APP_TITLE": "Mason Sterling - Multiverses Audio",
+      "VITE_APP_VERSION": "1.0.0"
+    }
+  },
+  
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
   ],
+  
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -19,8 +35,30 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=()"
+        }
+      ]
     }
   ],
+  
   "redirects": [
     {
       "source": "/instagram",
@@ -42,5 +80,17 @@
       "destination": "https://suno.com/@masonsterling",
       "permanent": false
     }
-  ]
+  ],
+  
+  "functions": {
+    "app/api/**/*.js": {
+      "runtime": "@vercel/node"
+    }
+  },
+  
+  "regions": ["yul1", "iad1"],
+  
+  "github": {
+    "autoAlias": false
+  }
 }
