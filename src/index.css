@@ -39,6 +39,45 @@
       box-shadow: 0 0 30px 0px theme('colors.purple.500');
     }
   }
+
+  /* 🆕 NOUVEAUX STYLES POUR L'EP LOVE'S JOURNEY */
+  .ep-glow {
+    animation: ep-pulse 3s ease-in-out infinite alternate;
+  }
+  
+  @keyframes ep-pulse {
+    from {
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+    }
+    to {
+      box-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+    }
+  }
+  
+  .love-gradient {
+    background: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animation pour les cartes EP */
+  .ep-card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .ep-card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4);
+  }
+
+  /* Effet néon pour les titres de l'EP */
+  .neon-text {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
 }
 
 /* Scrollbar Styling */
@@ -89,4 +128,24 @@
   cursor: pointer;
   border: 2px solid white;
   box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+}
+
+/* 🎵 Animations spécifiques pour Love's Journey */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* Effet de vague pour les backgrounds */
+@keyframes wave {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.wave-animation {
+  animation: wave 4s ease-in-out infinite;
 }
